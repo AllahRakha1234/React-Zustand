@@ -5,6 +5,7 @@ import { Project } from '../types';
 interface TodoState {
     projects: Project[];
     addProject: (name: string) => void;
+    deleteProject: (projectId: number) => void;
     addTask: (projectId: number, title: string) => void;
     toggleTask: (projectId: number, taskId: number) => void;
     deleteTask: (projectId: number, taskId: number) => void;
@@ -12,16 +13,20 @@ interface TodoState {
 
 const useTodoStore = create<TodoState>()(
     persist(
-        (set) => ({
-            projects: [],
+        (set) => ({       // set is a function to update the state
+            projects: [], // initial state
 
-            addProject: (name) =>
-                set((state) => ({
+            addProject: (name) =>    // addProject is a function to add a project
+                set((state) => ({    // set is a function to update the state (state is the current state)
                     projects: [
                         ...state.projects,
                         { id: Date.now(), name, tasks: [] },
                     ],
                 })),
+
+            deleteProject: (projectId) => set((state) => ({
+                projects: state.projects.filter((project) => project.id !== projectId)
+            })),
 
             addTask: (projectId, title) =>
                 set((state) => ({

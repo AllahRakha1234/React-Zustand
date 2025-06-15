@@ -20,7 +20,7 @@ function App() {
           <div className="w-full lg:w-1/3">
             <div className="card">
               <h2 className="text-xl font-semibold text-secondary-800 mb-4">Projects</h2>
-              <ProjectList setActiveProjectId={setActiveProjectId} />
+              <ProjectList setActiveProjectId={setActiveProjectId} activeProjectId={activeProjectId} />
             </div>
           </div>
 
