@@ -1,0 +1,106 @@
+@import 'tailwindcss';
+
+@theme {
+  /* Colors */
+  --color-primary-50: oklch(0.97 0.02 240);
+  --color-primary-100: oklch(0.94 0.04 240);
+  --color-primary-200: oklch(0.88 0.06 240);
+  --color-primary-300: oklch(0.82 0.08 240);
+  --color-primary-400: oklch(0.76 0.10 240);
+  --color-primary-500: oklch(0.70 0.12 240);
+  --color-primary-600: oklch(0.64 0.14 240);
+  --color-primary-700: oklch(0.58 0.16 240);
+  --color-primary-800: oklch(0.52 0.18 240);
+  --color-primary-900: oklch(0.46 0.20 240);
+
+  --color-secondary-50: oklch(0.98 0.01 240);
+  --color-secondary-100: oklch(0.96 0.02 240);
+  --color-secondary-200: oklch(0.92 0.03 240);
+  --color-secondary-300: oklch(0.88 0.04 240);
+  --color-secondary-400: oklch(0.84 0.05 240);
+  --color-secondary-500: oklch(0.80 0.06 240);
+  --color-secondary-600: oklch(0.76 0.07 240);
+  --color-secondary-700: oklch(0.72 0.08 240);
+  --color-secondary-800: oklch(0.68 0.09 240);
+  --color-secondary-900: oklch(0.64 0.10 240);
+
+  /* Font Family */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Shadows */
+  --shadow-soft: 0 2px 15px -3px rgb(0 0 0 / 0.07), 0 10px 20px -2px rgb(0 0 0 / 0.04);
+  --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+  /* Border Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+}
+
+/* Base Styles */
+@layer base {
+  body {
+    @apply bg-secondary-50 text-secondary-900 min-h-screen;
+    font-family: var(--font-sans);
+  }
+}
+
+/* Component Styles */
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-700;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary-200 text-secondary-700 hover:bg-secondary-300 active:bg-secondary-400;
+  }
+
+  .input {
+    @apply w-full px-4 py-2 rounded-md border border-secondary-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-soft p-6;
+  }
+
+  .task-item {
+    @apply flex items-center gap-3 p-4 bg-white rounded-lg border border-secondary-200 hover:border-primary-300 transition-colors duration-200;
+  }
+
+  .task-checkbox {
+    @apply w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors duration-200;
+  }
+
+  .task-checkbox-completed {
+    @apply bg-primary-500 border-primary-500;
+  }
+
+  .task-checkbox-uncompleted {
+    @apply border-secondary-300 hover:border-primary-500;
+  }
+
+  .task-text {
+    @apply flex-1 text-secondary-700 transition-colors duration-200;
+  }
+
+  .task-text-completed {
+    @apply line-through text-secondary-400;
+  }
+
+  .delete-button {
+    @apply opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-secondary-400 hover:text-red-500;
+  }
+}

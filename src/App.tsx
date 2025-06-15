@@ -1,0 +1,44 @@
+import { useState } from 'react';
+import ProjectList from './components/ProjectList';
+import TaskList from './components/TaskList';
+import AddTaskForm from './components/AddTaskForm';
+import './index.css';
+
+function App() {
+  const [activeProjectId, setActiveProjectId] = useState<number | null>(null);
+
+  return (
+    <div className="min-h-screen bg-secondary-50">
+      <header className="bg-white shadow-soft">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <h1 className="text-3xl font-bold text-primary-600">Task Manager</h1>
+        </div>
+      </header>
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="w-full lg:w-1/3">
+            <div className="card">
+              <h2 className="text-xl font-semibold text-secondary-800 mb-4">Projects</h2>
+              <ProjectList setActiveProjectId={setActiveProjectId} />
+            </div>
+          </div>
+
+          <div className="w-full lg:w-2/3">
+            <div className="card mb-6">
+              <h2 className="text-xl font-semibold text-secondary-800 mb-4">Add New Task</h2>
+              <AddTaskForm projectId={activeProjectId} />
+            </div>
+
+            <div className="card">
+              <h2 className="text-xl font-semibold text-secondary-800 mb-4">Tasks</h2>
+              <TaskList projectId={activeProjectId} />
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export default App;
