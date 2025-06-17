@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useTodoStore from '../store/todoStore';
+import useTodoStore from '../store/tasksStore';
 
 interface Props {
     setActiveProjectId: (id: number | null) => void;
