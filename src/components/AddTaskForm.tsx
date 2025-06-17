@@ -9,7 +9,11 @@ export default function AddTaskForm({ projectId }: Props) {
     const [title, setTitle] = useState('');
     const addTask = useTodoStore((state) => state.addTask);
 
-    if (!projectId) return null;
+    if (!projectId) return (
+        <div className="text-center py-8">
+            <p className="text-secondary-500">Select a project to add tasks</p>
+        </div>
+    );
 
     return (
         <form
